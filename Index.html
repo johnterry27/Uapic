@@ -1,0 +1,878 @@
+<!doctype html>
+<html class="scroll-smooth" lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIDAYU - Visualizing Cultural Synergy</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Montserrat"', "sans-serif"],
+              mono: ['"Montserrat"', "sans-serif"],
+            },
+            colors: {
+              magenta: "#E11D48",
+              tidayuYellow: "#EAB308",
+              tidayuGreen: "#10B981",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- CSS Tambahan (Animasi Load, Scroll, dan Transisi) -->
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        /* Animasi saat halaman pertama kali dimuat (Fade In Hero Section) */
+        animation: fadeInPage 0.8s ease-out forwards;
+        opacity: 0;
+      }
+      .font-mono-custom {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* Keyframes Animasi Halaman Masuk */
+      @keyframes fadeInPage {
+        0% {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Class Fade Out untuk pindah halaman */
+      .fade-out-page {
+        animation: fadeOutPage 0.4s ease-in forwards !important;
+      }
+      @keyframes fadeOutPage {
+        0% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-15px);
+        }
+      }
+
+      /* =========================================
+         ANIMASI SCROLL (MUNCUL SAAT DI-SCROLL)
+         ========================================= */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      .reveal-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Delay opsional agar munculnya bergantian (kiri dulu, baru kanan) */
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#FAF9F6] text-[#0f172a] antialiased selection:bg-rose-500 selection:text-white relative min-h-screen"
+  >
+    <!-- Ambient Background Glows -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div
+        class="absolute -top-32 -left-32 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-emerald-400/10 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute top-2/3 left-1/3 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-3xl"
+      ></div>
+    </div>
+
+    <!-- 1. HEADER -->
+    <header
+      class="w-full absolute top-0 left-0 bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all border-b border-slate-200"
+    >
+      <div
+        class="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <a class="group flex items-center gap-3" href="#">
+          <img
+            alt="Logo TIDAYU"
+            class="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            src="Logo Tidayu Kalimantan Barat.png"
+          />
+          <span
+            class="text-2xl font-bold tracking-wider text-slate-900 font-sans"
+            >TIDAYU</span
+          >
+        </a>
+        <nav
+          class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs font-semibold tracking-wider uppercase font-sans"
+        >
+          <a
+            class="px-3.5 py-2 rounded-full text-rose-600 font-bold flex items-center bg-rose-50 border border-rose-200"
+            href="#teaser"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-rose-600 inline-block mr-1.5 animate-pulse"
+            ></span
+            >Beranda
+          </a>
+          <a
+            class="px-3.5 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+            href="Akulturasi.html"
+            >Akulturasi</a
+          >
+          <a
+            class="px-3.5 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+            href="#tionghoa"
+            >Tionghoa</a
+          >
+          <a
+            class="px-3.5 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+            href="#dayak"
+            >Dayak</a
+          >
+          <a
+            class="px-3.5 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+            href="#melayu"
+            >Melayu</a
+          >
+        </nav>
+      </div>
+    </header>
+    <!-- 2. HERO / VIDEO SECTION -->
+    <section
+      class="relative w-full h-screen bg-slate-950 overflow-hidden"
+      id="teaser"
+    >
+      <div
+        class="relative w-full h-full group/carousel"
+        data-purpose="borderless-video-carousel"
+      >
+        <div
+          class="flex h-full w-full transition-transform duration-700 ease-out"
+          id="carouselTrack"
+        >
+          <!-- Slide 1 -->
+          <div class="relative min-w-full h-full flex-shrink-0">
+            <img
+              alt="Preview Teaser TIDAYU"
+              class="absolute inset-0 w-full h-full object-cover opacity-90"
+              src="Slide_1.jpeg"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/50 to-slate-950/90"
+            ></div>
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center z-20 px-4 text-center space-y-6"
+            >
+              <span
+                class="font-mono-custom text-xs text-white/70 tracking-widest font-semibold px-4 py-2 uppercase"
+                >[ EKSPLORASI INTERAKTIF ]</span
+              >
+
+              <h2
+                class="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg tracking-tight"
+              >
+                Video Teaser
+              </h2>
+
+              <p
+                class="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto mt-4"
+              >
+                Sinergi visual mendalam dari warisan budaya <br />Tionghoa,
+                Dayak, dan Melayu.
+              </p>
+
+              <a
+                href="https://drive.google.com/drive/folders/10bzZeHfPOwnsre0LvN04yVLf8yN4_Yjg"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group mt-8 inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-rose-600/90 text-white font-bold text-sm uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(225,29,72,0.4)] border border-rose-500/50 hover:bg-rose-600 hover:-translate-y-1 transition-all duration-300"
+              >
+                PUTAR VIDEO
+                <span
+                  class="text-lg leading-none transition-transform group-hover:translate-x-1"
+                  >»</span
+                >
+              </a>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="relative min-w-full h-full flex-shrink-0">
+            <!-- Menggunakan link gambar asli Anda -->
+            <img
+              alt="360 Derajat View"
+              class="absolute inset-0 w-full h-full object-cover opacity-90"
+              src="Slide_2.jpeg"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/50 to-slate-950/90"
+            ></div>
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center z-20 px-4 text-center space-y-6"
+            >
+              <span
+                class="font-mono-custom text-xs text-white/70 tracking-widest font-semibold px-4 py-2 uppercase"
+                >[ PENGALAMAN SPASIAL ]</span
+              >
+              <h2
+                class="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg tracking-tight"
+              >
+                360 Derajat
+              </h2>
+              <p
+                class="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto mt-4"
+              >
+                Jelajahi keindahan arsitektur dan ruang <br />secara virtual
+                dari segala sudut.
+              </p>
+              <a
+                href="https://www.youtube.com/watch?v=Ah41WjY2Llk"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group mt-8 inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-emerald-600/90 text-white font-bold text-sm uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-500/50 hover:bg-emerald-600 hover:-translate-y-1 transition-all duration-300"
+              >
+                JELAJAHI 360°
+                <span
+                  class="text-lg leading-none transition-transform group-hover:translate-x-1"
+                  >»</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="relative min-w-full h-full flex-shrink-0">
+            <!-- Menggunakan link gambar asli Anda -->
+            <img
+              alt="Lapentor Virtual Tour"
+              class="absolute inset-0 w-full h-full object-cover opacity-90"
+              src="Slide_3.jpeg"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/50 to-slate-950/90"
+            ></div>
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center z-20 px-4 text-center space-y-6"
+            >
+              <span
+                class="font-mono-custom text-xs text-white/70 tracking-widest font-semibold px-4 py-2 uppercase"
+                >[ TUR VIRTUAL EKSKLUSIF ]</span
+              >
+              <h2
+                class="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg tracking-tight"
+              >
+                Virtual Tour
+              </h2>
+              <p
+                class="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto mt-4"
+              >
+                Melangkah lebih dekat ke dalam <br />pusat warisan budaya kita.
+              </p>
+              <a
+                href="https://app.lapentor.com/sphere/tidayu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group mt-8 inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-amber-600/90 text-white font-bold text-sm uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(245,158,11,0.4)] border border-amber-500/50 hover:bg-amber-600 hover:-translate-y-1 transition-all duration-300"
+              >
+                MULAI TUR VIRTUAL
+                <span
+                  class="text-lg leading-none transition-transform group-hover:translate-x-1"
+                  >»</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="relative min-w-full h-full flex-shrink-0">
+            <!-- Menggunakan link gambar asli Anda -->
+            <img
+              alt="Akulturasi Budaya TIDAYU"
+              class="absolute inset-0 w-full h-full object-cover opacity-90"
+              src="Slide_4.jpeg"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/50 to-slate-950/90"
+            ></div>
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center z-20 px-4 text-center space-y-6"
+            >
+              <span
+                class="font-mono-custom text-xs text-white/70 tracking-widest font-semibold px-4 py-2 uppercase"
+                >[ HARMONI NUSANTARA ]</span
+              >
+              <h2
+                class="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg tracking-tight"
+              >
+                Akulturasi Budaya
+              </h2>
+              <p
+                class="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto mt-4"
+              >
+                Sinergi yang menyatukan keberagaman <br />menjadi kekuatan
+                bangsa.
+              </p>
+              <a
+                href="Akulturasi.html"
+                class="group mt-8 inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-blue-600/90 text-white font-bold text-sm uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] border border-blue-500/50 hover:bg-blue-600 hover:-translate-y-1 transition-all duration-300"
+              >
+                EKSPLORASI BUDAYA
+                <span
+                  class="text-lg leading-none transition-transform group-hover:translate-x-1"
+                  >»</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT AREA -->
+    <main
+      class="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-24 py-12 relative z-10 overflow-hidden"
+    >
+      <!-- 3. PAVILIUN 01: TIONGHOA -->
+      <section
+        class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-4 relative z-10"
+        id="tionghoa"
+      >
+        <!-- Tambahkan class 'reveal-on-scroll' di sini -->
+        <div class="space-y-6 reveal-on-scroll">
+          <div>
+            <span
+              class="text-[11px] font-bold font-mono tracking-widest uppercase text-rose-600 bg-rose-50 border border-rose-200/80 px-3 py-1 rounded-full inline-block mb-3"
+              > PAVILIUN 01  ETNIS TIONGHOA</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight"
+            >
+              Seni & Arsitektur Tionghoa
+            </h2>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed font-normal">
+            Elemen arsitektur klasik seperti kelenteng berpadu dengan
+            fungsionalitas lokal. Menampilkan bagaimana ukiran naga, warna merah
+            simbolik, tungku keramik, dan struktur atap melengkung berasimilasi
+            secara damai di tanah Kalimantan dan pesisir Melayu.
+          </p>
+          <div
+            class="bg-white/90 backdrop-blur rounded-2xl p-6 border-l-4 border-l-rose-500 border border-slate-200 shadow-md space-y-2"
+          >
+            <h3
+              class="text-xs font-bold font-mono text-rose-700 tracking-wider uppercase flex items-center gap-2"
+            >
+              <span class="w-2 h-2 rounded-full bg-rose-700"></span>SEJARAH
+              KONGSI & TRADISI KERAMIK
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Sejak era pertambangan emas abad ke-18 dan pembentukan sistem
+              kongsi di pesisir Kalimantan Barat, masyarakat Tionghoa berakar
+              harmonis bersama komunitas Dayak dan Melayu.
+            </p>
+          </div>
+          <div>
+            <a
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white text-xs font-bold rounded-xl shadow-md transition-all group"
+              href="Tionghoa.html"
+            >
+              Lihat Selengkapnya (Masuk Paviliun Tionghoa)
+              <span class="transition-transform group-hover:translate-x-1"
+                >→</span
+              >
+            </a>
+          </div>
+        </div>
+        <!-- Tambahkan class 'reveal-on-scroll' dan 'delay-200' untuk gambarnya -->
+        <div
+          class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group h-[380px] reveal-on-scroll delay-200"
+        >
+          <img
+            alt="Fasad Klenteng Tri Dharma Bumi Raya"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            src="Tionghoa-beranda.PNG"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"
+          ></div>
+          <div
+            class="absolute bottom-0 inset-x-0 p-6 flex flex-col space-y-1.5 text-white"
+          >
+            <span
+              class="font-mono text-xs font-semibold text-rose-500 tracking-wider"
+            ></span>
+            <p class="font-medium text-xs text-slate-100 leading-tight">
+              Visualisasi Sejarah Tionghoa
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PAVILIUN 02: DAYAK -->
+      <section
+        class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-12 border-t border-slate-200/80 relative z-10"
+        id="dayak"
+      >
+        <!-- Gambar muncul pertama saat di-scroll -->
+        <div
+          class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group h-[380px] order-2 lg:order-1 reveal-on-scroll"
+        >
+          <img
+            alt="Rumah Betang dan Perisai Talawang"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            src="Dayak-beranda.PNG"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"
+          ></div>
+          <div
+            class="absolute bottom-0 inset-x-0 p-6 flex flex-col space-y-1.5 text-white"
+          >
+            <span
+              class="font-mono text-xs font-semibold text-emerald-300 tracking-wider"
+            ></span>
+            <p class="font-medium text-xs text-slate-100 leading-tight">
+              Penari Menggunakan Pakaian Adat Dayak
+            </p>
+          </div>
+        </div>
+        <!-- Tulisan Dayak delay sedikit agar berurutan -->
+        <div class="space-y-6 order-1 lg:order-2 reveal-on-scroll delay-200">
+          <div>
+            <span
+              class="text-[11px] font-bold font-mono tracking-widest uppercase text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3 py-1 rounded-full inline-block mb-3"
+              > PAVILIUN 02  ETNIS DAYAK</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight"
+            >
+              Simbolisme Motif & Kehidupan Dayak
+            </h2>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Eksplorasi motif tato, ukiran kayu tameng (perisai), dan arsitektur
+            Rumah Betang yang komunal. Menunjukkan ketahanan spiritual tradisi
+            Dayak yang beradaptasi harmonis dengan perkembangan sosial
+            kemasyarakatan modern.
+          </p>
+          <div class="pt-2">
+            <a
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition-all group"
+              href="Dayak.html"
+            >
+              Lihat Selengkapnya (Masuk Paviliun Dayak)
+              <span class="transition-transform group-hover:translate-x-1"
+                >→</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. PAVILIUN 03: MELAYU -->
+      <section
+        class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-12 border-t border-slate-200/80 relative z-10"
+        id="melayu"
+      >
+        <!-- Teks Melayu muncul duluan -->
+        <div class="space-y-6 reveal-on-scroll">
+          <div>
+            <span
+              class="text-[11px] font-bold font-mono tracking-widest uppercase text-amber-700 bg-amber-50 border border-amber-200/80 px-3 py-1 rounded-full inline-block mb-3"
+              > PAVILIUN 03  ETNIS MELAYU</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight"
+            >
+              Estetika Melayu & Integrasi Pesisir
+            </h2>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Seni pantun, arsitektur rumah panggung pesisir (Istana Kadriyah),
+            serta kehalusan tenun songket Sambas melambangkan keterbukaan budaya
+            Melayu menyambut pengaruh luar dalam naungan kesantunan tradisi.
+          </p>
+          <div>
+            <a
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-xs font-bold rounded-xl shadow-md transition-all group"
+              href="Melayu.html"
+            >
+              Lihat Selengkapnya (Masuk Paviliun Melayu)
+              <span class="transition-transform group-hover:translate-x-1"
+                >→</span
+              >
+            </a>
+          </div>
+        </div>
+        <!-- Gambar Melayu delay sedikit -->
+        <div
+          class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group h-[380px] reveal-on-scroll delay-200"
+        >
+          <img
+            alt="Tenun Songket Sambas & Arsitektur Melayu"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            src="Melayu-beranda.PNG"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"
+          ></div>
+          <div
+            class="absolute bottom-0 inset-x-0 p-6 flex flex-col space-y-1.5 text-white"
+          >
+            <span
+              class="font-mono text-xs font-semibold text-amber-300 tracking-wider"
+            ></span>
+            <p class="font-medium text-xs text-slate-100 leading-tight">
+              Atraksi Meriam Bambu
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. PETA 360 GEOGRAFIS -->
+      <section
+        class="space-y-6 pt-12 border-t border-slate-200/80 relative z-10"
+        id="peta-360"
+      >
+        <div class="text-center space-y-3 max-w-2xl mx-auto reveal-on-scroll">
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+          >
+            360 Virtual
+          </h2>
+        </div>
+
+        <div
+          class="border border-slate-200/90 rounded-2xl overflow-hidden bg-slate-900 shadow-xl shadow-slate-200/40 reveal-on-scroll delay-200"
+        >
+          <!-- Embed Lapentor 360 Tour -->
+          <div class="relative w-full h-[480px] lg:h-[600px]">
+            <iframe 
+              src="https://app.lapentor.com/sphere/tidayu" 
+              frameborder="0" 
+              width="100%" 
+              height="100%" 
+              scrolling="no" 
+              allow="vr,gyroscope,accelerometer,fullscreen" 
+              allowfullscreen="true" 
+              class="w-full h-full border-none">
+            </iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 7. FOOTER -->
+    <footer
+      class="border-t border-slate-200 bg-white/90 backdrop-blur mt-24 relative z-10 reveal-on-scroll delay-200"
+    >
+      <div class="max-w-[1280px] mx-auto px-6 py-12 lg:py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <!-- Brand & About -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <img
+                alt="Logo TIDAYU"
+                class="h-8 w-auto object-contain"
+                src="Logo Tidayu Kalimantan Barat.png"
+              />
+              <span
+                class="font-extrabold text-base tracking-tight text-slate-900"
+                >TIDAYU Nusantara</span
+              >
+            </div>
+            <p
+              class="text-xs text-slate-500 leading-relaxed max-w-xs font-normal"
+            >
+              Arsip digital pemetaan dan visualisasi interaktif warisan budaya
+              Tionghoa, Dayak, dan Melayu di Nusantara. Memperkuat harmoni dan
+              kebhinekaan bangsa.
+            </p>
+          </div>
+
+          <!-- Sitemap -->
+          <div class="space-y-3">
+            <h4
+              class="text-xs font-mono font-bold tracking-wider uppercase text-slate-900 border-l-2 border-rose-500 pl-2"
+            >
+              SITEMAP
+            </h4>
+            <ul class="space-y-2 text-xs text-slate-600 font-medium">
+              <li>
+                <a
+                  class="hover:text-rose-600 transition-colors"
+                  href="Index.html"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-rose-600 transition-colors"
+                  href="Tionghoa.html"
+                  >Paviliun Tionghoa</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-emerald-600 transition-colors"
+                  href="Dayak.html"
+                  >Paviliun Dayak</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-amber-600 transition-colors"
+                  href="Melayu.html"
+                  >Paviliun Melayu</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-slate-900 transition-colors"
+                  href="#peta-360"
+                  >Peta 360°</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kontak -->
+          <div class="space-y-3">
+            <h4
+              class="text-xs font-mono font-bold tracking-wider uppercase text-slate-900 border-l-2 border-emerald-500 pl-2"
+            >
+              KONTAK
+            </h4>
+            <ul class="space-y-2 text-xs text-slate-600 font-medium">
+              <li>
+                <a class="hover:text-slate-900 transition-colors" href="#"
+                  >Hubungi Kami</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-slate-900 transition-colors" href="#"
+                  >Tentang Proyek</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-slate-900 transition-colors" href="#"
+                  >Arsip Dokumentasi</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ikuti Kami -->
+          <div class="space-y-3">
+            <h4
+              class="text-xs font-mono font-bold tracking-wider uppercase text-slate-900 border-l-2 border-amber-500 pl-2"
+            >
+              IKUTI KAMI
+            </h4>
+            <div class="flex items-center space-x-3 text-slate-600">
+              <a
+                aria-label="Instagram"
+                class="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center hover:text-white hover:bg-rose-600 hover:border-rose-600 transition-all"
+                href="#"
+              >
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <rect
+                    height="18"
+                    rx="4"
+                    stroke-width="2"
+                    width="18"
+                    x="3"
+                    y="3"
+                  ></rect>
+                  <circle cx="12" cy="12" r="3.5" stroke-width="2"></circle>
+                  <line
+                    stroke-linecap="round"
+                    stroke-width="2"
+                    x1="17.5"
+                    x2="17.51"
+                    y1="6.5"
+                    y2="6.5"
+                  ></line>
+                </svg>
+              </a>
+              <a
+                aria-label="Facebook"
+                class="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all"
+                href="#"
+              >
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.808C10.595 0 9 1.583 9 4.615V8z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                aria-label="YouTube"
+                class="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center hover:text-white hover:bg-rose-600 hover:border-rose-600 transition-all"
+                href="#"
+              >
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                aria-label="X"
+                class="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center hover:text-white hover:bg-slate-900 hover:border-slate-900 transition-all"
+                href="#"
+              >
+                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- JavaScript Gabungan -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ----------------------------------------------------
+        // 1. ANIMASI MUNCUL SAAT DI-SCROLL (INTERSECTION OBSERVER)
+        // ----------------------------------------------------
+        const reveals = document.querySelectorAll(".reveal-on-scroll");
+
+        const revealOptions = {
+          threshold: 0.15, // Animasi terpicu saat 15% elemen terlihat di layar
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const revealOnScroll = new IntersectionObserver(function (
+          entries,
+          observer,
+        ) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-active");
+              // Berhenti mengawasi elemen setelah animasinya selesai (agar tidak berulang terus)
+              observer.unobserve(entry.target);
+            }
+          });
+        }, revealOptions);
+
+        reveals.forEach((reveal) => {
+          revealOnScroll.observe(reveal);
+        });
+
+        // ----------------------------------------------------
+        // 2. ANIMASI PERPINDAHAN HALAMAN (PAGE TRANSITION)
+        // ----------------------------------------------------
+        const internalLinks = document.querySelectorAll('a[href$=".html"]');
+        internalLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetUrl = this.href;
+            document.body.classList.add("fade-out-page");
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 400);
+          });
+        });
+      });
+
+      // ----------------------------------------------------
+      // 3. KONTROLER CAROUSEL (SLIDER)
+      // ----------------------------------------------------
+      (function initCarousel() {
+        const track = document.getElementById("carouselTrack");
+        let currentIndex = 0;
+        const totalSlides = 4;
+        const durasiAutoSlide = 3000;
+
+        function updateSlide(index) {
+          if (index < 0) index = totalSlides - 1;
+          if (index >= totalSlides) index = 0;
+          currentIndex = index;
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        let autoSlide = setInterval(
+          () => updateSlide(currentIndex + 1),
+          durasiAutoSlide,
+        );
+
+        // Fitur geser drag
+        let isDragging = false;
+        let startX = 0;
+        let endX = 0;
+
+        track.style.cursor = "grab";
+        const dragStart = (e) => {
+          isDragging = true;
+          track.style.cursor = "grabbing";
+          startX = e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
+        };
+        const dragMove = (e) => {
+          if (!isDragging) return;
+          endX = e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
+        };
+        const dragEnd = () => {
+          if (!isDragging) return;
+          isDragging = false;
+          track.style.cursor = "grab";
+          const jarakGeser = startX - endX;
+          if (jarakGeser > 50) updateSlide(currentIndex + 1);
+          else if (jarakGeser < -50) updateSlide(currentIndex - 1);
+          startX = 0;
+          endX = 0;
+        };
+
+        track.addEventListener("mousedown", dragStart);
+        track.addEventListener("mousemove", dragMove);
+        track.addEventListener("mouseup", dragEnd);
+        track.addEventListener("mouseleave", () => {
+          if (isDragging) dragEnd();
+        });
+        track.addEventListener("touchstart", dragStart, { passive: true });
+        track.addEventListener("touchmove", dragMove, { passive: true });
+        track.addEventListener("touchend", dragEnd);
+      })();
+    </script>
+  </body>
+</html>

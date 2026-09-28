@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TIDAYU - Paviliun Dayak</title>
+
+    <!-- Google Fonts: Montserrat -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                "Montserrat",
+                "system-ui",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "Segoe UI",
+                "Roboto",
+                "sans-serif",
+              ],
+            },
+            colors: {
+              wireframe: {
+                bg: "#fcfcfc",
+                border: "#e5e7eb",
+                box: "#f4f4f5",
+                dark: "#18181b",
+                gray: "#71717a",
+                lightgray: "#a1a1aa",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom CSS for Animations & Utilities -->
+    <style data-purpose="custom-animations">
+      body {
+        font-family: "Montserrat", sans-serif;
+        /* Animasi saat halaman pertama kali dimuat */
+        animation: pageFadeIn 0.8s ease-out forwards;
+        opacity: 0;
+      }
+
+      /* =========================================
+         ANIMASI PERPINDAHAN HALAMAN & SCROLL
+         ========================================= */
+      @keyframes pageFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Class untuk pindah halaman */
+      .page-fade-out {
+        animation: pageFadeOut 0.4s ease-in forwards !important;
+      }
+      @keyframes pageFadeOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-15px);
+        }
+      }
+
+      /* Animasi Scroll Reveal */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      .reveal-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Delay untuk kemunculan bergantian */
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+      .delay-400 {
+        transition-delay: 400ms;
+      }
+      /* Backdrop utilities for mobile menu */
+      .mobile-menu-active {
+        transform: translateX(0) !important;
+      }
+      .overlay-active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white text-zinc-900 antialiased font-sans selection:bg-emerald-200 selection:text-emerald-900"
+  >
+    <!-- ==========================================
+         BEGIN: HEADER & NAVIGATION (DESKTOP & MOBILE)
+         ========================================== -->
+    <header
+      class="w-full bg-white/95 backdrop-blur-md border-b border-emerald-100 sticky top-0 z-50 transition-all duration-300 shadow-sm"
+      id="mainHeader"
+    >
+      <div
+        class="max-w-[1440px] mx-auto px-6 md:px-12 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <a class="flex items-center gap-3 group" href="Index.html">
+          <div
+            class="relative w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center border border-emerald-100 group-hover:bg-emerald-100 transition-colors"
+          >
+            <img
+              alt="Logo TIDAYU"
+              class="w-6 h-6 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              src="Logo Tidayu Kalimantan Barat.png"
+            />
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="text-[15px] font-black tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors uppercase leading-none"
+              >TIDAYU</span
+            >
+            <span
+              class="text-[9px] font-semibold text-emerald-500 tracking-widest uppercase mt-0.5"
+              >Kalimantan Barat</span
+            >
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="hidden lg:flex items-center space-x-8 text-[13px] font-bold text-slate-500 tracking-wide uppercase"
+        >
+          <a
+            class="hover:text-emerald-600 transition-colors py-2 relative group"
+            href="Index.html"
+          >
+            Beranda
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="hover:text-emerald-600 transition-colors py-2 relative group"
+            href="Akulturasi.html"
+          >
+            Akulturasi
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="hover:text-emerald-600 transition-colors py-2 relative group"
+            href="Tionghoa.html"
+          >
+            Tionghoa
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <!-- Active State Menu -->
+          <a
+            class="text-emerald-700 py-2 relative flex items-center gap-1.5"
+            href="Dayak.html"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"
+            ></span>
+            Dayak
+            <span
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-600"
+            ></span>
+          </a>
+          <a
+            class="hover:text-emerald-600 transition-colors py-2 relative group"
+            href="Melayu.html"
+          >
+            Melayu
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="mobileMenuBtn"
+          class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors focus:outline-none"
+        >
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div
+      id="mobileOverlay"
+      class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+    ></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div
+      id="mobileDrawer"
+      class="fixed top-0 right-0 w-[280px] h-full bg-white z-[70] transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl lg:hidden flex flex-col"
+    >
+      <div
+        class="p-6 flex items-center justify-between border-b border-emerald-100"
+      >
+        <span
+          class="text-sm font-black text-slate-900 uppercase tracking-widest"
+          >Menu</span
+        >
+        <button
+          id="closeMenuBtn"
+          class="w-8 h-8 flex items-center justify-center rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors"
+        >
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div
+        class="p-6 flex flex-col space-y-5 text-sm font-bold text-slate-600 uppercase tracking-wide"
+      >
+        <a
+          href="Index.html"
+          class="flex items-center gap-3 hover:text-emerald-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]">home</span>
+          Beranda</a
+        >
+        <a
+          href="Akulturasi.html"
+          class="flex items-center gap-3 hover:text-emerald-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]"
+            >diversity_3</span
+          >
+          Akulturasi</a
+        >
+        <a
+          href="Tionghoa.html"
+          class="flex items-center gap-3 hover:text-emerald-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]"
+            >temple_buddhist</span
+          >
+          Tionghoa</a
+        >
+        <a
+          href="Dayak.html"
+          class="flex items-center gap-3 text-emerald-600 bg-emerald-50 p-3 rounded-xl"
+          ><span class="material-symbols-outlined text-[20px]">explore</span>
+          Dayak</a
+        >
+        <a
+          href="Melayu.html"
+          class="flex items-center gap-3 hover:text-emerald-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]">mosque</span>
+          Melayu</a
+        >
+      </div>
+      <div class="mt-auto p-6 border-t border-emerald-100 bg-emerald-50/50">
+        <p class="text-[10px] text-slate-400 font-medium text-center">
+          © 2026 TIDAYU Virtual Exhibition
+        </p>
+      </div>
+    </div>
+    <!-- END: HEADER -->
+
+    <main class="max-w-[1360px] mx-auto px-8 py-10 space-y-24">
+      <!-- BEGIN: HeroSection (Tanpa Scroll Reveal agar langsung tampil saat dibuka) -->
+      <section class="flex justify-center pt-2">
+        <div
+          class="w-full max-w-4xl mx-auto py-8 px-10 text-center rounded-[100px] border border-emerald-300/80 bg-gradient-to-b from-emerald-50/50 via-white/80 to-emerald-50/20 shadow-sm relative overflow-hidden backdrop-blur-sm flex flex-col items-center justify-center space-y-3"
+        >
+          <div
+            class="absolute -top-12 -right-12 w-48 h-48 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div
+            class="absolute -bottom-12 -left-12 w-48 h-48 bg-teal-200/30 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div
+            class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-emerald-200 bg-white/90 text-[11px] tracking-wider font-bold text-emerald-800 uppercase shadow-xs"
+          >
+            <span class="material-symbols-outlined text-emerald-600 text-sm"
+              >spa</span
+            >Eksplorasi Kuratorial Virtual Dayak Kalbar
+          </div>
+          <h1
+            class="text-4xl sm:text-5xl font-extrabold tracking-tight text-zinc-950 uppercase pt-1"
+          >
+            <span class="text-emerald-900">Paviliun</span>
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-teal-800"
+              >Dayak</span
+            >
+          </h1>
+          <p
+            class="text-xs sm:text-sm text-zinc-600 font-medium max-w-lg mx-auto leading-relaxed"
+          >
+            Menelusuri Akar Pusaka, Kearifan Tradisi, dan Kemegahan Rumah
+            Radakng Suku Bangsa Penjaga Rimba Borneo.
+          </p>
+          <div
+            class="flex items-center gap-6 pt-1 text-[11px] uppercase tracking-widest font-semibold text-emerald-800/80"
+          >
+            <span class="flex items-center gap-1"
+              ><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span
+              >KANAYATN</span
+            >
+            <span class="flex items-center gap-1"
+              ><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span
+              >IBANIC</span
+            >
+            <span class="flex items-center gap-1"
+              ><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span
+              >BANUAKA</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- END: HeroSection -->
+
+      <!-- BEGIN: SejarahSection -->
+      <section class="pt-8 border-t border-zinc-100">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          <!-- Kolom Kiri: Judul, Teks, dan Kotak -->
+          <div
+            class="lg:col-span-5 flex flex-col justify-between h-full reveal-on-scroll"
+          >
+            <!-- Bagian Atas: Judul & Paragraf -->
+            <div>
+              <h2
+                class="text-3xl font-extrabold tracking-tight text-zinc-950 mb-5"
+              >
+                Akar Kebudayaan dan Pusaka Borneo
+              </h2>
+              <div
+                class="space-y-4 text-zinc-600 text-[13.5px] leading-relaxed"
+              >
+                <p
+                  class="border-l-2 border-emerald-600 pl-4 py-1 text-zinc-800 font-medium bg-emerald-50/40 rounded-r"
+                >
+                  Berasal dari kata
+                  <strong class="text-emerald-950 font-bold">'Daya'</strong>
+                  yang bermakna hulu pedalaman, leluhur Dayak merupakan mata
+                  rantai peradaban migrasi Austronesia ribuan tahun silam di
+                  bentang bumi khatulistiwa.
+                </p>
+                <p>
+                  Di belantara Kalimantan Barat, peradaban etnis ini berkembang
+                  harmonis bersama hutan tropis, melahirkan rumpun-rumpun besar
+                  seperti Kendayan, Ribunic, Ibanic, dan Banuaka dengan kekayaan
+                  hukum adat, filosofi gotong-royong, dan seni ukir sakral yang
+                  lestari.
+                </p>
+              </div>
+            </div>
+
+            <!-- Bagian Bawah: Kotak Statistik -->
+            <div class="grid grid-cols-2 gap-3 mt-8 lg:mt-auto">
+              <div
+                class="p-3 rounded-lg border border-emerald-100 bg-emerald-50/50 hover:bg-emerald-100/50 transition-colors"
+              >
+                <div class="text-emerald-700 text-lg font-black">3.000 SM</div>
+                <div class="text-zinc-600 text-[11px]">
+                  Migrasi Awal Austronesia
+                </div>
+              </div>
+              <div
+                class="p-3 rounded-lg border border-emerald-100 bg-emerald-50/50 hover:bg-emerald-100/50 transition-colors"
+              >
+                <div class="text-emerald-700 text-lg font-black">4 Rumpun</div>
+                <div class="text-zinc-600 text-[11px]">
+                  Entitas Adat Utama Kalbar
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Gambar -->
+          <div class="lg:col-span-7 h-full reveal-on-scroll delay-200">
+            <div
+              class="w-full h-full min-h-[320px] sm:min-h-[420px] rounded-xl border border-emerald-200 relative overflow-hidden shadow-md group"
+            >
+              <img
+                alt="Bentang Alam Rimba Pedalaman Dayak Kalimantan Barat"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTemVtHWgr9mxVn7GI4BnhfPOlbMEUBJNN53C1brU9gHKamT7ulg4mRoE_hj3KpeeuCibfnl1SgQhQOUEiPvbzTzX9shrMQo0f5yJUqyHiuWqSY4NRvSOEiTi9Kmf9Zcm5LO35KK4tV_2i5eYMkpqsdiNTAO4GhWmspjhJ-K6dRCgCP6pCQEKq0eFs6xxZJs1ySBxHYvrmSYgdn8kxt1dvWDDoAfLpzxN7_r23WceYC86_hGKil3qz"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-950/20 to-transparent"
+              ></div>
+              <div
+                class="absolute top-4 right-4 bg-emerald-900/80 backdrop-blur-md text-emerald-200 px-3 py-1 rounded-full text-[10px] tracking-wider border border-emerald-600/40 uppercase flex items-center gap-1.5 font-bold shadow-sm"
+              >
+                <span
+                  class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
+                ></span
+                >SEJARAH DAYAK KALBAR
+              </div>
+              <div
+                class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-lg border border-emerald-200/80 shadow-lg text-left"
+              >
+                <div class="flex items-center justify-between">
+                  <span
+                    class="block text-xs font-bold tracking-wider uppercase text-emerald-900"
+                    >Migrasi Austronesia &amp; Peta Sebaran Rumpun Adat</span
+                  >
+                  <span class="text-[10px] text-emerald-700 font-semibold"
+                    >WILAYAH HULU BORNEO</span
+                  >
+                </div>
+                <p class="text-[11px] text-zinc-600 mt-1 leading-normal">
+                  Dokumentasi pemetaan teritori adat Dayak sepanjang lembah
+                  Sungai Kapuas hingga batas pegunungan Schwaner.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END: SejarahSection -->
+
+      <!-- BEGIN: PerayaanTradisiSection -->
+      <section class="space-y-6 pt-8 border-t border-zinc-100">
+        <div class="reveal-on-scroll">
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-zinc-950 mt-1 mb-2"
+          >
+            Perayaan &amp; Tradisi Dayak
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Card 1 -->
+          <div
+            class="border border-emerald-100 rounded-xl p-3 flex flex-col space-y-3.5 bg-white shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all group reveal-on-scroll delay-100 cursor-default"
+          >
+            <div
+              class="w-full aspect-[4/3] rounded-lg overflow-hidden relative shadow-inner bg-zinc-100"
+            >
+              <img
+                alt="Gawai Dayak Pesta Panen"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="Gawai Dayak.PNG"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="absolute bottom-2 left-2 text-[10px] font-bold tracking-wide uppercase text-white bg-emerald-700/90 backdrop-blur-sm px-2 py-0.5 rounded shadow-sm"
+                >GAWAI DAYAK</span
+              >
+            </div>
+            <div class="space-y-1.5 px-1 pb-1">
+              <h3
+                class="text-sm font-bold text-emerald-950 flex items-center justify-between group-hover:text-emerald-700 transition-colors"
+              >
+                <span>Gawai Dayak</span>
+                <span class="material-symbols-outlined text-emerald-600 text-sm"
+                  >grain</span
+                >
+              </h3>
+              <p class="text-xs text-zinc-600 leading-relaxed">
+                Pesta adat akbar ungkapan rasa syukur kepada Sang Pencipta
+                (Jubata) atas melimpahnya hasil panen padi sawah dan ladang.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="border border-emerald-100 rounded-xl p-3 flex flex-col space-y-3.5 bg-white shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all group reveal-on-scroll delay-200 cursor-default"
+          >
+            <div
+              class="w-full aspect-[4/3] rounded-lg overflow-hidden relative shadow-inner bg-zinc-100"
+            >
+              <img
+                alt="Naik Dango Panen Kanayatn"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="Naik Dango.PNG"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="absolute bottom-2 left-2 text-[10px] font-bold tracking-wide uppercase text-white bg-emerald-700/90 backdrop-blur-sm px-2 py-0.5 rounded shadow-sm"
+                >NAIK DANGO</span
+              >
+            </div>
+            <div class="space-y-1.5 px-1 pb-1">
+              <h3
+                class="text-sm font-bold text-emerald-950 flex items-center justify-between group-hover:text-emerald-700 transition-colors"
+              >
+                <span>Naik Dango</span>
+                <span class="material-symbols-outlined text-emerald-600 text-sm"
+                  >warehouse</span
+                >
+              </h3>
+              <p class="text-xs text-zinc-600 leading-relaxed">
+                Ritual sakral panen Dayak Kanayatn saat menyimpan ikatan tangkai
+                padi perdana ke dalam dango (lumbung adat).
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="border border-emerald-100 rounded-xl p-3 flex flex-col space-y-3.5 bg-white shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all group reveal-on-scroll delay-300 cursor-default"
+          >
+            <div
+              class="w-full aspect-[4/3] rounded-lg overflow-hidden relative shadow-inner bg-zinc-100"
+            >
+              <img
+                alt="Ajat Temuai Datai Tarian Sambut Tamu"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="Ajat Temuaidatai.PNG"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="absolute bottom-2 left-2 text-[10px] font-bold tracking-wide uppercase text-white bg-emerald-700/90 backdrop-blur-sm px-2 py-0.5 rounded shadow-sm"
+                >AJAT TEMUAI DATAI</span
+              >
+            </div>
+            <div class="space-y-1.5 px-1 pb-1">
+              <h3
+                class="text-sm font-bold text-emerald-950 flex items-center justify-between group-hover:text-emerald-700 transition-colors"
+              >
+                <span>Ajat Temuai Datai</span>
+                <span class="material-symbols-outlined text-emerald-600 text-sm"
+                  >accessibility_new</span
+                >
+              </h3>
+              <p class="text-xs text-zinc-600 leading-relaxed">
+                Tarian sambut tamu agung rumpun Ibanic berpadu denting gong,
+                gemerlap manik, dan ritual pemotongan pantan bambu.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="border border-emerald-100 rounded-xl p-3 flex flex-col space-y-3.5 bg-white shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all group reveal-on-scroll delay-400 cursor-default"
+          >
+            <div
+              class="w-full aspect-[4/3] rounded-lg overflow-hidden relative shadow-inner bg-zinc-100"
+            >
+              <img
+                alt="Upacara Tolak Bala Basamsam"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="Tolak Bala.PNG"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="absolute bottom-2 left-2 text-[10px] font-bold tracking-wide uppercase text-white bg-emerald-700/90 backdrop-blur-sm px-2 py-0.5 rounded shadow-sm"
+                >TOLAK BALA</span
+              >
+            </div>
+            <div class="space-y-1.5 px-1 pb-1">
+              <h3
+                class="text-sm font-bold text-emerald-950 flex items-center justify-between group-hover:text-emerald-700 transition-colors"
+              >
+                <span>Upacara Tolak Bala</span>
+                <span class="material-symbols-outlined text-emerald-600 text-sm"
+                  >shield_with_heart</span
+                >
+              </h3>
+              <p class="text-xs text-zinc-600 leading-relaxed">
+                Tradisi Basamsam dan penaburan sesaji adat sakral menjaga
+                kampung dan keselamatan komunal dari mara bahaya.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END: PerayaanTradisiSection -->
+
+      <!-- BEGIN: ArsitekturDayakSection -->
+      <section class="space-y-6 pt-8 border-t border-zinc-100">
+        <div class="reveal-on-scroll">
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-zinc-950 mt-1 mb-2"
+          >
+            Arsitektur Dayak
+          </h2>
+        </div>
+
+        <div class="space-y-6">
+          <!-- List Item 1: Rumah Radakng (Gambar di Kanan) -->
+          <article
+            class="bg-white border border-emerald-200/80 rounded-3xl p-6 md:p-8 flex flex-col lg:flex-row items-center gap-8 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group reveal-on-scroll"
+          >
+            <div class="lg:w-7/12 space-y-3">
+              <div class="flex items-center gap-2">
+                <span
+                  class="px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 text-[9px] font-black uppercase tracking-widest border border-emerald-200"
+                  >Pontianak</span
+                >
+              </div>
+              <h3
+                class="text-sm md:text-base font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors"
+              >
+                Rumah Radakng (Pontianak)
+              </h3>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify mb-4"
+              >
+                Rumah panjang khas Suku Dayak Kanayatn yang merupakan rumah adat
+                terbesar di Indonesia berukuran panjang 138 meter dan tinggi 7
+                meter, mampu menampung lebih dari 600 jiwa sebagai simbol
+                keharmonisan komunal.
+              </p>
+              <div
+                class="flex items-center gap-4 text-[10px] md:text-[11px] font-bold text-emerald-800 uppercase mt-2"
+              >
+                <span
+                  class="flex items-center gap-1.5 bg-emerald-50/50 px-3 py-1.5 rounded-lg border border-emerald-100"
+                >
+                  <span
+                    class="material-symbols-outlined text-[14px] text-emerald-500"
+                    >straighten</span
+                  >138 Meter
+                </span>
+                <span
+                  class="flex items-center gap-1.5 bg-emerald-50/50 px-3 py-1.5 rounded-lg border border-emerald-100"
+                >
+                  <span
+                    class="material-symbols-outlined text-[14px] text-emerald-500"
+                    >groups</span
+                  >600+ Warga
+                </span>
+                <span
+                  class="flex items-center gap-1.5 bg-emerald-50/50 px-3 py-1.5 rounded-lg border border-emerald-100"
+                >
+                  <span
+                    class="material-symbols-outlined text-[14px] text-emerald-500"
+                    >forest</span
+                  >Kayu Ulin Besi
+                </span>
+              </div>
+            </div>
+            <div class="w-full lg:w-5/12">
+              <div
+                class="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden border border-emerald-200 shadow-inner group"
+              >
+                <img
+                  alt="Rumah Radakng Pontianak"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  src="Rumah Radank.PNG"
+                  loading="lazy"
+                />
+                <div
+                  class="absolute inset-0 bg-emerald-900/10 group-hover:bg-transparent transition-colors duration-300"
+                ></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- List Item 2: Rumah Betang Komunal (Gambar di Kiri - Reverse) -->
+          <article
+            class="bg-white border border-emerald-200/80 rounded-3xl p-6 md:p-8 flex flex-col lg:flex-row-reverse items-center gap-8 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group reveal-on-scroll"
+          >
+            <div class="lg:w-7/12 space-y-3">
+              <div class="flex items-center gap-2">
+                <span
+                  class="px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 text-[9px] font-black uppercase tracking-widest border border-emerald-200"
+                  >Hulu Kapuas &amp; Apokayan</span
+                >
+              </div>
+              <h3
+                class="text-sm md:text-base font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors"
+              >
+                Rumah Betang Komunal
+              </h3>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify mb-4"
+              >
+                Pondasi panggung arsitektur vernakular dari tiang kayu besi ulin
+                yang telah bertahan berabad-abad, menaungi bilik-bilik keluarga,
+                tempat musyawarah adat, dan pelestarian hukum waris
+                turun-temurun.
+              </p>
+              <div
+                class="flex items-center gap-4 text-[10px] md:text-[11px] font-bold text-emerald-800 uppercase mt-2"
+              >
+                <span
+                  class="flex items-center gap-1.5 bg-emerald-50/50 px-3 py-1.5 rounded-lg border border-emerald-100"
+                >
+                  <span
+                    class="material-symbols-outlined text-[14px] text-emerald-500"
+                    >verified</span
+                  >Struktur Tahan Rayap
+                </span>
+                <span
+                  class="flex items-center gap-1.5 bg-emerald-50/50 px-3 py-1.5 rounded-lg border border-emerald-100"
+                >
+                  <span
+                    class="material-symbols-outlined text-[14px] text-emerald-500"
+                    >handshake</span
+                  >Filosofi Gotong Royong
+                </span>
+              </div>
+            </div>
+            <div class="w-full lg:w-5/12">
+              <div
+                class="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden border border-emerald-200 shadow-inner group"
+              >
+                <img
+                  alt="Rumah Betang Kayu Dayak"
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  src="Rumah betang.PNG"
+                  loading="lazy"
+                />
+                <div
+                  class="absolute inset-0 bg-emerald-900/10 group-hover:bg-transparent transition-colors duration-300"
+                ></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- END: ArsitekturDayakSection -->
+    </main>
+
+    <!-- BEGIN: BottomNavigationFooter -->
+    <footer
+      class="w-full border-t border-zinc-200 mt-20 py-8 bg-white reveal-on-scroll"
+    >
+      <div
+        class="max-w-[1360px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <div
+          class="text-center md:text-left w-full md:w-auto flex flex-col md:flex-row items-center gap-4"
+        >
+          <div
+            class="w-10 h-10 rounded bg-emerald-700 flex items-center justify-center text-white text-sm font-bold shadow-sm"
+          >
+            TD
+          </div>
+          <div>
+            <h4
+              class="text-xs font-bold tracking-wider uppercase text-emerald-950"
+            >
+              PAMERAN VIRTUAL REKONSILIASI
+            </h4>
+            <p class="text-[11px] text-zinc-500 mt-0.5 font-medium">
+              Seni, Sejarah &amp; Arsitektur Tradisional Kalimantan Barat
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full md:w-auto flex justify-center">
+          <a
+            href="Index.html"
+            class="inline-block bg-emerald-700 hover:bg-emerald-800 text-white text-[11px] font-bold uppercase tracking-wider px-6 py-2.5 rounded shadow-sm transition-colors text-center"
+          >
+            KEMBALI KE PAMERAN VIRTUAL
+          </a>
+        </div>
+
+        <div
+          class="text-center md:text-right w-full md:w-auto flex justify-center md:justify-end"
+        >
+          <a
+            class="inline-flex items-center text-[13px] font-bold text-emerald-700 hover:text-emerald-800 transition-colors group"
+            href="Melayu.html"
+          >
+            <span>Jelajahi Paviliun Melayu</span>
+            <span
+              class="ml-1.5 text-base leading-none transition-transform group-hover:translate-x-1"
+              >→</span
+            >
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- END: BottomNavigationFooter -->
+
+    <!-- ====================================================
+         SCRIPT: ANIMASI SCROLL & TRANSISI HALAMAN
+         ==================================================== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. ANIMASI MUNCUL SAAT DI-SCROLL (INTERSECTION OBSERVER)
+        const reveals = document.querySelectorAll(".reveal-on-scroll");
+
+        const revealOptions = {
+          threshold: 0.15, // Animasi terpicu saat 15% bagian elemen terlihat di layar
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const revealOnScroll = new IntersectionObserver(function (
+          entries,
+          observer,
+        ) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-active");
+              // Berhenti mengawasi elemen setelah animasinya selesai
+              observer.unobserve(entry.target);
+            }
+          });
+        }, revealOptions);
+
+        reveals.forEach((reveal) => {
+          revealOnScroll.observe(reveal);
+        });
+
+        // 2. ANIMASI PERPINDAHAN HALAMAN (PAGE TRANSITION)
+        const internalLinks = document.querySelectorAll("a[href]");
+
+        internalLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            const targetUrl = this.getAttribute("href");
+
+            // Abaikan link "#" atau link yang membuka tab baru (_blank)
+            if (
+              !targetUrl ||
+              targetUrl.startsWith("#") ||
+              this.target === "_blank"
+            )
+              return;
+
+            e.preventDefault();
+            document.body.classList.add("page-fade-out");
+
+            // Pindah halaman setelah animasi fade out selesai (0.4s / 400ms)
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 400);
+          });
+        });
+
+        // 3. MOBILE NAVIGATION MENU LOGIC
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const closeMenuBtn = document.getElementById("closeMenuBtn");
+        const mobileDrawer = document.getElementById("mobileDrawer");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+
+        function openMobileMenu() {
+          mobileDrawer.classList.add("mobile-menu-active");
+          mobileOverlay.classList.add("overlay-active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMobileMenu() {
+          mobileDrawer.classList.remove("mobile-menu-active");
+          mobileOverlay.classList.remove("overlay-active");
+          document.body.style.overflow = "";
+        }
+
+        if (mobileMenuBtn)
+          mobileMenuBtn.addEventListener("click", openMobileMenu);
+        if (closeMenuBtn)
+          closeMenuBtn.addEventListener("click", closeMobileMenu);
+        if (mobileOverlay)
+          mobileOverlay.addEventListener("click", closeMobileMenu);
+
+        // 4. STICKY HEADER BLUR EFFECT
+        const header = document.getElementById("mainHeader");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 20) {
+            header.classList.add("shadow-md", "bg-white/95");
+            header.classList.remove("bg-white");
+          } else {
+            header.classList.remove("shadow-md", "bg-white/95");
+            header.classList.add("bg-white");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

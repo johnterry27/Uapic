@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paviliun Akulturasi - TIDAYU Kalimantan Barat</title>
+
+    <!-- Google Fonts: Strict Montserrat Sesuai Permintaan -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Montserrat"', "sans-serif"],
+              mono: ['"Montserrat"', "monospace"],
+            },
+            colors: {
+              // Palet Harmoni Akulturasi
+              // Menggabungkan representasi: Pink (Tionghoa), Emerald (Dayak), Amber (Melayu)
+              indigo: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                200: "#c7d2fe",
+                300: "#a5b4fc",
+                400: "#818cf8",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#4338ca",
+                800: "#3730a3",
+                900: "#312e81",
+                950: "#1e1b4b",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style data-purpose="custom-animations">
+      /* Base Animation */
+      body {
+        font-family: "Montserrat", sans-serif;
+        animation: pageFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        opacity: 0;
+      }
+      @keyframes pageFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .page-fade-out {
+        animation: pageFadeOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+      }
+      @keyframes pageFadeOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Scroll Reveal */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: opacity, transform;
+      }
+      .reveal-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Delays for Staggered Animations */
+      .delay-75 {
+        transition-delay: 75ms;
+      }
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-150 {
+        transition-delay: 150ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+      .delay-400 {
+        transition-delay: 400ms;
+      }
+      .delay-500 {
+        transition-delay: 500ms;
+      }
+
+      /* Custom Scrollbar for better UI richness */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f8fafc;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+
+      /* Backdrop utilities for mobile menu */
+      .mobile-menu-active {
+        transform: translateX(0) !important;
+      }
+      .overlay-active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    </style>
+  </head>
+
+  <!-- Latar belakang menggunakan gradient lembut untuk kesan premium -->
+  <body
+    class="bg-slate-50/50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900 overflow-x-hidden relative"
+    style="
+      background-image:
+        radial-gradient(
+          at 0% 0%,
+          rgba(99, 102, 241, 0.04) 0px,
+          transparent 50%
+        ),
+        radial-gradient(
+          at 100% 15%,
+          rgba(236, 72, 153, 0.03) 0px,
+          transparent 40%
+        );
+    "
+  >
+    <!-- ==========================================
+         BEGIN: HEADER & NAVIGATION (DESKTOP & MOBILE)
+         ========================================== -->
+    <header
+      class="w-full bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 transition-all duration-300 shadow-sm"
+      id="mainHeader"
+    >
+      <div
+        class="max-w-[1440px] mx-auto px-6 md:px-12 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <a class="flex items-center gap-3 group" href="Index.html">
+          <div
+            class="relative w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200 group-hover:bg-slate-100 transition-colors"
+          >
+            <img
+              alt="Logo TIDAYU"
+              class="w-6 h-6 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              src="Logo Tidayu Kalimantan Barat.png"
+            />
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="text-[15px] font-black tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors uppercase leading-none"
+              >TIDAYU</span
+            >
+            <span
+              class="text-[9px] font-semibold text-slate-500 tracking-widest uppercase mt-0.5"
+              >Kalimantan Barat</span
+            >
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="hidden lg:flex items-center space-x-8 text-[13px] font-bold text-slate-500 tracking-wide uppercase"
+        >
+          <a
+            class="hover:text-indigo-600 transition-colors py-2 relative group"
+            href="Index.html"
+          >
+            Beranda
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <!-- Active State Menu -->
+          <a
+            class="text-indigo-700 py-2 relative flex items-center gap-1.5"
+            href="Akulturasi.html"
+          >
+            <!-- 3 Dots representing the 3 cultures -->
+            <span class="flex gap-0.5">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse"
+              ></span>
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse delay-100"
+              ></span>
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse delay-200"
+              ></span>
+            </span>
+            Akulturasi
+            <span
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600"
+            ></span>
+          </a>
+          <a
+            class="hover:text-pink-600 transition-colors py-2 relative group"
+            href="Tionghoa.html"
+          >
+            Tionghoa
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="hover:text-emerald-600 transition-colors py-2 relative group"
+            href="Dayak.html"
+          >
+            Dayak
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="hover:text-amber-600 transition-colors py-2 relative group"
+            href="Melayu.html"
+          >
+            Melayu
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="mobileMenuBtn"
+          class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 transition-colors focus:outline-none"
+        >
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div
+      id="mobileOverlay"
+      class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+    ></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div
+      id="mobileDrawer"
+      class="fixed top-0 right-0 w-[280px] h-full bg-white z-[70] transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl lg:hidden flex flex-col"
+    >
+      <div
+        class="p-6 flex items-center justify-between border-b border-slate-100"
+      >
+        <span
+          class="text-sm font-black text-slate-900 uppercase tracking-widest"
+          >Menu</span
+        >
+        <button
+          id="closeMenuBtn"
+          class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 transition-colors"
+        >
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div
+        class="p-6 flex flex-col space-y-5 text-sm font-bold text-slate-600 uppercase tracking-wide"
+      >
+        <a
+          href="Index.html"
+          class="flex items-center gap-3 hover:text-indigo-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]">home</span>
+          Beranda</a
+        >
+        <a
+          href="Akulturasi.html"
+          class="flex items-center gap-3 text-indigo-600 bg-indigo-50 p-3 rounded-xl"
+          ><span class="material-symbols-outlined text-[20px]"
+            >diversity_3</span
+          >
+          Akulturasi</a
+        >
+        <a
+          href="Tionghoa.html"
+          class="flex items-center gap-3 hover:text-pink-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]"
+            >temple_buddhist</span
+          >
+          Tionghoa</a
+        >
+        <a
+          href="Dayak.html"
+          class="flex items-center gap-3 hover:text-emerald-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]">explore</span>
+          Dayak</a
+        >
+        <a
+          href="Melayu.html"
+          class="flex items-center gap-3 hover:text-amber-600 transition-colors"
+          ><span class="material-symbols-outlined text-[20px]">mosque</span>
+          Melayu</a
+        >
+      </div>
+      <div class="mt-auto p-6 border-t border-slate-100 bg-slate-50/50">
+        <p class="text-[10px] text-slate-400 font-medium text-center">
+          © 2026 TIDAYU Virtual Exhibition
+        </p>
+      </div>
+    </div>
+    <!-- END: HEADER -->
+
+    <!-- ==========================================
+         BEGIN: MAIN CONTENT (Ukuran Lebar Standard: 1240px)
+         ========================================== -->
+    <main class="flex-grow w-full pb-20">
+      <!-- HERO CAPSULE SECTION -->
+      <section class="max-w-[1240px] mx-auto px-6 pt-10 pb-16">
+        <div
+          class="w-full max-w-5xl mx-auto rounded-[3rem] md:rounded-[100px] border border-slate-200/80 bg-gradient-to-b from-fuchsia-50/40 via-white/90 to-emerald-50/40 p-8 md:p-16 text-center relative shadow-sm flex flex-col items-center justify-center overflow-hidden"
+        >
+          <!-- Ornamen Dekoratif Latar -->
+          <div
+            class="absolute -top-24 -left-24 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div
+            class="absolute -bottom-24 -right-24 w-72 h-72 bg-emerald-300/20 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div
+            class="absolute top-1/2 right-10 w-40 h-40 bg-amber-300/20 rounded-full blur-2xl pointer-events-none"
+          ></div>
+
+          <!-- Badge -->
+          <div
+            class="flex items-center gap-2 text-[10px] md:text-[11px] font-bold tracking-widest text-slate-700 uppercase border border-slate-200/80 rounded-full px-4 md:px-5 py-1.5 mb-6 bg-white/80 backdrop-blur-sm shadow-xs relative z-10 reveal-on-scroll"
+          >
+            <span class="flex gap-1">
+              <span
+                class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"
+              ></span>
+              <span
+                class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse delay-150"
+              ></span>
+              <span
+                class="w-2 h-2 rounded-full bg-amber-500 animate-pulse delay-300"
+              ></span>
+            </span>
+            <span>Kalbar Cultural Heritage</span>
+          </div>
+
+          <!-- Judul Utama -->
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-950 mb-5 uppercase relative z-10 reveal-on-scroll delay-100"
+          >
+            PAVILIUN
+            <span
+              class="bg-gradient-to-r from-pink-600 via-amber-500 to-emerald-600 bg-clip-text text-transparent"
+              >AKULTURASI</span
+            >
+          </h1>
+
+          <!-- Deskripsi Singkat -->
+          <p
+            class="text-xs md:text-[13px] text-slate-600 font-medium max-w-2xl mx-auto relative z-10 leading-relaxed reveal-on-scroll delay-200"
+          >
+            Perpaduan tiga etnis
+            <span class="font-bold text-pink-600">Tionghoa</span>,
+            <span class="font-bold text-emerald-600">Dayak</span>, dan
+            <span class="font-bold text-amber-600">Melayu</span> yang membentuk
+            harmoni, toleransi, dan mahakarya kebudayaan abadi di Kalimantan
+            Barat.
+          </p>
+
+          <!-- Scroll Down Indicator -->
+          <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 reveal-on-scroll delay-300 opacity-50"
+          >
+            <span
+              class="text-[9px] font-bold uppercase tracking-widest text-slate-500"
+              >Scroll</span
+            >
+            <span
+              class="material-symbols-outlined text-sm text-slate-400 animate-bounce"
+              >arrow_downward</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- WRAPPER UNTUK KONTEN (Mengatur Lebar 1240px dengan border sejajar) -->
+      <div class="max-w-[1240px] mx-auto px-6 space-y-24">
+        <!-- ==========================================
+             SECTION 1: TENTANG TIDAYU (Sejarah & Integrasi)
+             ========================================== -->
+        <section class="pt-10 border-t border-slate-200/60" id="sejarah">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Kolom Teks -->
+            <div
+              class="lg:col-span-6 flex flex-col justify-center space-y-6 reveal-on-scroll"
+            >
+              <h2
+                class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug"
+              >
+                Tentang TIDAYU
+              </h2>
+
+              <div
+                class="space-y-4 text-xs md:text-[13px] leading-relaxed text-slate-600 text-justify"
+              >
+                <p>
+                  <strong class="text-slate-900 font-bold">TIDAYU</strong>
+                  adalah akronim dari
+                  <strong class="text-slate-900 font-bold"
+                    >Tionghoa, Dayak, dan Melayu</strong
+                  >, yang melambangkan kerukunan, toleransi, dan akulturasi
+                  budaya tiga etnis mayoritas di Kalimantan Barat. Konsep ini
+                  bukan sekadar sintesis simbolik, melainkan representasi
+                  harmonisasi nilai komunal yang terwujud dalam keseharian
+                  masyarakat.
+                </p>
+
+                <!-- List Elements -->
+                <div
+                  class="space-y-3 pt-2 bg-slate-50/80 border border-slate-100 rounded-2xl p-5"
+                >
+                  <div class="flex items-start">
+                    <span
+                      class="flex items-center justify-center w-5 h-5 rounded-full bg-pink-100 text-pink-600 text-[10px] font-bold mr-3 shrink-0"
+                      >1</span
+                    >
+                    <p class="text-slate-600 leading-relaxed">
+                      <strong class="text-slate-900 font-bold"
+                        >Seni & Budaya Komunal:</strong
+                      >
+                      Keterbukaan ritual dan kolaborasi perayaan festival lintas
+                      etnis di ruang publik bersama.
+                    </p>
+                  </div>
+                  <div class="flex items-start">
+                    <span
+                      class="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 text-[10px] font-bold mr-3 shrink-0"
+                      >2</span
+                    >
+                    <p class="text-slate-600 leading-relaxed">
+                      <strong class="text-slate-900 font-bold"
+                        >Wastra Tradisional:</strong
+                      >
+                      Fusi estetika motif floral Tionghoa, lengkung sulur Dayak,
+                      dan geometris Melayu.
+                    </p>
+                  </div>
+                  <div class="flex items-start">
+                    <span
+                      class="flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 text-amber-600 text-[10px] font-bold mr-3 shrink-0"
+                      >3</span
+                    >
+                    <p class="text-slate-600 leading-relaxed">
+                      <strong class="text-slate-900 font-bold"
+                        >Kohesi Sosial Toleransi:</strong
+                      >
+                      Integrasi kekeluargaan yang saling menghormati batas adat
+                      serta memperkuat perdamaian regional.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kolom Visual -->
+            <div class="lg:col-span-6 reveal-on-scroll delay-200">
+              <div
+                class="relative w-full rounded-3xl overflow-hidden border border-slate-200 shadow-xl group bg-white"
+              >
+                <div
+                  class="absolute -inset-0.5 bg-gradient-to-r from-pink-400 via-amber-300 to-emerald-400 rounded-3xl opacity-30 blur-sm pointer-events-none transition-opacity group-hover:opacity-50"
+                ></div>
+                <div
+                  class="relative rounded-3xl overflow-hidden bg-white h-[380px]"
+                >
+                  <img
+                    alt="Akulturasi Budaya Tidayu"
+                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                    src="TariTidayu.png"
+                    loading="lazy"
+                  />
+
+                  <!-- Overlay Gradient -->
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6"
+                  >
+                    <div
+                      class="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl"
+                    >
+                      <span
+                        class="text-[11px] font-bold text-white tracking-wide flex items-center gap-2 uppercase"
+                      >
+                        <span
+                          class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"
+                        ></span>
+                        Simbol Harmoni Tionghoa, Dayak & Melayu
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 2: MAHAKARYA 6 MOTIF BATIK
+             ========================================== -->
+        <section class="pt-10 border-t border-slate-200/60" id="motif-batik">
+          <div class="text-center mb-12 reveal-on-scroll">
+            <span
+              class="inline-block text-[10px] font-bold tracking-widest uppercase text-slate-500 mb-2"
+              >Seni Kriya Wastra</span
+            >
+            <h2
+              class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 mb-3"
+            >
+              Mahakarya 6 Motif Batik Tidayu
+            </h2>
+            <p class="text-xs md:text-[13px] text-slate-500 max-w-2xl mx-auto">
+              Dokumentasi ornamen geometris dan filosofi sinkretisme visual tiga
+              kebudayaan yang dituangkan di atas lembaran kain.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Motif 01: LEMBAYUNG -->
+            <article
+              class="border border-pink-200/80 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-white to-pink-50/30 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 hover:border-pink-300 transition-all duration-300 space-y-4 relative overflow-hidden group reveal-on-scroll"
+            >
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-14 h-14 rounded-full overflow-hidden border-2 border-pink-400 shrink-0 shadow-md"
+                >
+                  <img
+                    alt="Motif Lembayung"
+                    class="w-full h-full object-cover object-left group-hover:scale-110 transition-transform duration-500"
+                    src="Lembayung.png"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span
+                      class="px-1.5 py-0.5 rounded bg-pink-100 text-[9px] font-black text-pink-600 uppercase tracking-widest border border-pink-200"
+                      >01</span
+                    >
+                    <h3
+                      class="text-sm font-extrabold text-slate-900 tracking-wider"
+                    >
+                      LEMBAYUNG
+                    </h3>
+                  </div>
+                  <p
+                    class="text-[10px] md:text-[11px] text-pink-500 font-bold uppercase tracking-wide"
+                  >
+                    Simbol Harmonisasi Senja
+                  </p>
+                </div>
+              </div>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify pt-2"
+              >
+                Perpaduan gradasi warna merah Tionghoa dengan pola garis perisai
+                Dayak yang melambangkan kehangatan serta perlindungan bersama
+                dalam satu atap keberagaman.
+              </p>
+            </article>
+
+            <!-- Motif 02: SERUNI -->
+            <article
+              class="border border-amber-200/80 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-white to-amber-50/30 shadow-sm hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-300 transition-all duration-300 space-y-4 relative overflow-hidden group reveal-on-scroll delay-100"
+            >
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-400 shrink-0 shadow-md"
+                >
+                  <img
+                    alt="Motif Seruni"
+                    class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                    src="Seruni.webp"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span
+                      class="px-1.5 py-0.5 rounded bg-amber-100 text-[9px] font-black text-amber-600 uppercase tracking-widest border border-amber-200"
+                      >02</span
+                    >
+                    <h3
+                      class="text-sm font-extrabold text-slate-900 tracking-wider"
+                    >
+                      SERUNI
+                    </h3>
+                  </div>
+                  <p
+                    class="text-[10px] md:text-[11px] text-amber-500 font-bold uppercase tracking-wide"
+                  >
+                    Bunga Keabadian & Restu
+                  </p>
+                </div>
+              </div>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify pt-2"
+              >
+                Adaptasi flora krisan oriental yang diuntai melingkar dengan
+                lengkungan pucuk rebung Melayu, bermakna kemakmuran tanpa henti
+                dan doa keselamatan yang terus mengalir.
+              </p>
+            </article>
+
+            <!-- Motif 03: HARMONI -->
+            <article
+              class="border border-emerald-200/80 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-white to-emerald-50/30 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300 transition-all duration-300 space-y-4 relative overflow-hidden group reveal-on-scroll delay-200"
+            >
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-400 shrink-0 shadow-md"
+                >
+                  <img
+                    alt="Motif Harmoni"
+                    class="w-full h-full object-cover object-right group-hover:scale-110 transition-transform duration-500"
+                    src="Harmoni.png"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span
+                      class="px-1.5 py-0.5 rounded bg-emerald-100 text-[9px] font-black text-emerald-600 uppercase tracking-widest border border-emerald-200"
+                      >03</span
+                    >
+                    <h3
+                      class="text-sm font-extrabold text-slate-900 tracking-wider"
+                    >
+                      HARMONI
+                    </h3>
+                  </div>
+                  <p
+                    class="text-[10px] md:text-[11px] text-emerald-500 font-bold uppercase tracking-wide"
+                  >
+                    Sintesis Tiga Jiwa
+                  </p>
+                </div>
+              </div>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify pt-2"
+              >
+                Motif spiral burung Enggang Dayak yang bersanding dengan awan
+                Mega Mendung oriental dan simetri corak insang Melayu Pontianak
+                dalam satu tatanan artistik.
+              </p>
+            </article>
+
+            <!-- Motif 04: BEUNTAI -->
+            <article
+              class="border border-pink-200/80 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-white to-pink-50/30 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 hover:border-pink-300 transition-all duration-300 space-y-4 relative overflow-hidden group reveal-on-scroll"
+            >
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-14 h-14 rounded-full overflow-hidden border-2 border-pink-400 shrink-0 shadow-md"
+                >
+                  <img
+                    alt="Motif Beuntai"
+                    class="w-full h-full object-cover object-left group-hover:scale-110 transition-transform duration-500"
+                    src="Beuntai.png"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span
+                      class="px-1.5 py-0.5 rounded bg-pink-100 text-[9px] font-black text-pink-600 uppercase tracking-widest border border-pink-200"
+                      >04</span
+                    >
+                    <h3
+                      class="text-sm font-extrabold text-slate-900 tracking-wider"
+                    >
+                      BEUNTAI
+                    </h3>
+                  </div>
+                  <p
+                    class="text-[10px] md:text-[11px] text-pink-500 font-bold uppercase tracking-wide"
+                  >
+                    Jalinan Kekerabatan
+                  </p>
+                </div>
+              </div>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify pt-2"
+              >
+                Garis-garis tenun ikat yang disambungkan menyerupai rantai
+                persaudaraan lintas rumpun budaya. Merupakan simbol ikatan yang
+                tak pernah terputus oleh perbedaan.
+              </p>
+            </article>
+
+            <!-- Motif 05: SIMFONI -->
+            <article
+              class="border border-amber-200/80 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-white to-amber-50/30 shadow-sm hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-300 transition-all duration-300 space-y-4 relative overflow-hidden group reveal-on-scroll delay-100"
+            >
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-400 shrink-0 shadow-md"
+                >
+                  <img
+                    alt="Motif Simfoni"
+                    class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                    src="Simfoni.png"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span
+                      class="px-1.5 py-0.5 rounded bg-amber-100 text-[9px] font-black text-amber-600 uppercase tracking-widest border border-amber-200"
+                      >05</span
+                    >
+                    <h3
+                      class="text-sm font-extrabold text-slate-900 tracking-wider"
+                    >
+                      SIMFONI
+                    </h3>
+                  </div>
+                  <p
+                    class="text-[10px] md:text-[11px] text-amber-500 font-bold uppercase tracking-wide"
+                  >
+                    Irama Nada Adat
+                  </p>
+                </div>
+              </div>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify pt-2"
+              >
+                Visualisasi ketukan musik Sape Dayak, dentuman rebana Melayu,
+                dan riuhnya gong barongsai yang dituangkan ke dalam ritme
+                repetisi ornamen kain batik.
+              </p>
+            </article>
+
+            <!-- Motif 06: RUPA -->
+            <article
+              class="border border-emerald-200/80 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-white to-emerald-50/30 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300 transition-all duration-300 space-y-4 relative overflow-hidden group reveal-on-scroll delay-200"
+            >
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-400 shrink-0 shadow-md"
+                >
+                  <img
+                    alt="Motif Rupa"
+                    class="w-full h-full object-cover object-right group-hover:scale-110 transition-transform duration-500"
+                    src="Rupa.png"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span
+                      class="px-1.5 py-0.5 rounded bg-emerald-100 text-[9px] font-black text-emerald-600 uppercase tracking-widest border border-emerald-200"
+                      >06</span
+                    >
+                    <h3
+                      class="text-sm font-extrabold text-slate-900 tracking-wider"
+                    >
+                      RUPA
+                    </h3>
+                  </div>
+                  <p
+                    class="text-[10px] md:text-[11px] text-emerald-500 font-bold uppercase tracking-wide"
+                  >
+                    Ekspresi Wajah Negeri
+                  </p>
+                </div>
+              </div>
+              <p
+                class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify pt-2"
+              >
+                Komposisi kontemporer yang merefleksikan toleransi kehidupan
+                multikultural Kota Singkawang sebagai episentrum sejati dari
+                semangat Bhinneka Tunggal Ika.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 3: GALERI AKULTURASI & SENI PERTUNJUKAN
+             ========================================== -->
+        <section class="pt-10 border-t border-slate-200/60" id="galeri">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal-on-scroll"
+          >
+            <div class="space-y-2">
+              <h2
+                class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900"
+              >
+                Galeri Akulturasi & Seni
+              </h2>
+            </div>
+            <div class="flex gap-2">
+              <button
+                aria-label="Previous Gallery Slide"
+                class="w-10 h-10 border-2 border-slate-200 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 hover:bg-slate-50 transition-all focus:outline-none"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >arrow_back_ios_new</span
+                >
+              </button>
+              <button
+                aria-label="Next Gallery Slide"
+                class="w-10 h-10 border-2 border-slate-200 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 hover:bg-slate-50 transition-all focus:outline-none"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >arrow_forward_ios</span
+                >
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Column Gallery Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Gallery Card 1: Arsitektur -->
+            <article
+              class="bg-white border border-amber-100 rounded-2xl p-4 flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group reveal-on-scroll delay-75"
+            >
+              <div
+                class="h-48 md:h-52 rounded-xl relative overflow-hidden bg-slate-100 mb-4"
+              >
+                <img
+                  alt="Arsitektur Vernakular"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  src="Rumah betang.PNG"
+                  loading="lazy"
+                />
+                <span
+                  class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-amber-500/95 backdrop-blur text-white shadow-sm"
+                  >Arsitektur</span
+                >
+              </div>
+              <div
+                class="text-center px-2 flex-grow flex flex-col justify-center"
+              >
+                <h3
+                  class="font-extrabold text-sm text-slate-900 group-hover:text-amber-600 transition-colors mb-1"
+                >
+                  Arsitektur
+                </h3>
+                <p
+                  class="text-[11px] md:text-xs text-slate-500 font-medium leading-relaxed"
+                >
+                  Rumah Betang, Klenteng, dan Istana Melayu dalam satu harmoni
+                  ruang.
+                </p>
+              </div>
+            </article>
+
+            <!-- Gallery Card 2: Seni Tari -->
+            <article
+              class="bg-white border border-pink-100 rounded-2xl p-4 flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group reveal-on-scroll delay-150"
+            >
+              <div
+                class="h-48 md:h-52 rounded-xl relative overflow-hidden bg-slate-100 mb-4"
+              >
+                <img
+                  alt="Seni Tari Tidayu"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  src="TariTidayu.png"
+                  loading="lazy"
+                />
+                <span
+                  class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-pink-500/95 backdrop-blur text-white shadow-sm"
+                  >Seni Tari</span
+                >
+              </div>
+              <div
+                class="text-center px-2 flex-grow flex flex-col justify-center"
+              >
+                <h3
+                  class="font-extrabold text-sm text-slate-900 group-hover:text-pink-600 transition-colors mb-1"
+                >
+                  Seni Tari
+                </h3>
+                <p
+                  class="text-[11px] md:text-xs text-slate-500 font-medium leading-relaxed"
+                >
+                  Harmonisasi ritmis Tari Zapin, kipas Cheongsam, dan gemulai
+                  Ruai Dayak.
+                </p>
+              </div>
+            </article>
+
+            <!-- Gallery Card 3: Festival & Kuliner -->
+            <article
+              class="bg-white border border-emerald-100 rounded-2xl p-4 flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group reveal-on-scroll delay-300"
+            >
+              <div
+                class="h-48 md:h-52 rounded-xl relative overflow-hidden bg-slate-100 mb-4"
+              >
+                <img
+                  alt="Ritual & Festival Kuliner"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  src="Capgomeh 1.png"
+                  loading="lazy"
+                />
+                <span
+                  class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-emerald-500/95 backdrop-blur text-white shadow-sm"
+                  >Tradisi</span
+                >
+              </div>
+              <div
+                class="text-center px-2 flex-grow flex flex-col justify-center"
+              >
+                <h3
+                  class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-600 transition-colors mb-1"
+                >
+                  Festival & Kuliner
+                </h3>
+                <p
+                  class="text-[11px] md:text-xs text-slate-500 font-medium leading-relaxed"
+                >
+                  Keriaan ritual Cap Go Meh, Pekan Gawai Dayak, & kearifan
+                  Saprahan.
+                </p>
+              </div>
+            </article>
+
+            <!-- Gallery Card 4: Tekstil & Tenun -->
+            <article
+              class="bg-white border border-indigo-100 rounded-2xl p-4 flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group reveal-on-scroll delay-400"
+            >
+              <div
+                class="h-48 md:h-52 rounded-xl relative overflow-hidden bg-slate-100 mb-4"
+              >
+                <img
+                  alt="Ragam Wastra Tekstil"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  src="Beuntai.png"
+                  loading="lazy"
+                />
+                <span
+                  class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-indigo-500/95 backdrop-blur text-white shadow-sm"
+                  >Wastra</span
+                >
+              </div>
+              <div
+                class="text-center px-2 flex-grow flex flex-col justify-center"
+              >
+                <h3
+                  class="font-extrabold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors mb-1"
+                >
+                  Tekstil & Tenun
+                </h3>
+                <p
+                  class="text-[11px] md:text-xs text-slate-500 font-medium leading-relaxed"
+                >
+                  Persilangan benang Kain Corak Insang, Tenun Ikat, Songket, dan
+                  Manik.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4: LANDMARK & GERBANG TOLERANSI
+             ========================================== -->
+        <section class="pt-10 border-t border-slate-200/60" id="landmark">
+          <div class="text-center mb-12 reveal-on-scroll">
+            <h2
+              class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 mb-3"
+            >
+              Landmark & Gerbang Toleransi
+            </h2>
+            <p class="text-xs md:text-[13px] text-slate-500 max-w-2xl mx-auto">
+              Monumen dan tapal batas yang berdiri kokoh sebagai simbol
+              integrasi kerukunan umat beragama dan berbudaya di Kota Singkawang
+              dan sekitarnya.
+            </p>
+          </div>
+
+          <!-- Feature Card: Bundaran 1001 AI -->
+          <article
+            class="bg-white border border-slate-200 p-6 md:p-10 rounded-3xl shadow-md hover:shadow-xl hover:border-slate-300 transition-all duration-300 reveal-on-scroll mb-6 group"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <span
+                  class="inline-flex px-3 py-1 bg-slate-100 text-[10px] font-black text-slate-600 uppercase tracking-widest rounded-md border border-slate-200"
+                  >Ikon Sentral Toleransi</span
+                >
+                <h3 class="text-lg md:text-xl font-extrabold text-slate-900">
+                  Bundaran 1001 AI (Tudung Saji & Tiga Etnis)
+                </h3>
+                <p
+                  class="text-xs md:text-[13px] text-slate-600 leading-relaxed text-justify"
+                >
+                  Monumen ikonik persimpangan utama Kota Singkawang yang
+                  memadukan filosofi keramahtamahan lewat ornamen Tudung Saji
+                  Melayu, relief Kuda Laut khas bahari pesisir Sambas, serta
+                  tiga patung figuratif yang merepresentasikan rumpun etnis
+                  Tionghoa, Dayak, dan Melayu. Mereka berdiri saling
+                  membelakangi menghadap segala penjuru namun bersatu dalam satu
+                  pijakan pondasi yang kokoh secara setara dan harmonis.
+                </p>
+              </div>
+              <div class="lg:col-span-5">
+                <div
+                  class="w-full h-56 md:h-64 rounded-2xl overflow-hidden border-4 border-white shadow-xl relative bg-slate-100 group-hover:shadow-2xl transition-shadow"
+                >
+                  <img
+                    alt="Bundaran 1001 AI"
+                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    src="Bundaran 1001 AI.png"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-3 right-3 px-3 py-1 rounded bg-black/70 backdrop-blur-sm text-white text-[10px] font-bold tracking-widest uppercase"
+                  >
+                    Pusat Kota
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stacked Bordered Gate Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Gate 1: Cap Go Meh (Tionghoa) -->
+            <article
+              class="bg-white border border-pink-100 p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-xl hover:border-pink-300 transition-all duration-300 flex flex-col justify-between group reveal-on-scroll delay-100"
+            >
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-pink-600 border border-pink-200"
+                    ><span class="material-symbols-outlined text-[16px]"
+                      >south</span
+                    ></span
+                  >
+                  <span
+                    class="px-2.5 py-1 rounded-md bg-pink-600/90 text-white text-[9px] font-black uppercase tracking-widest shadow-sm"
+                    >Batas Selatan</span
+                  >
+                </div>
+                <h3
+                  class="text-sm font-extrabold uppercase tracking-wide text-slate-900 group-hover:text-pink-600 transition-colors"
+                >
+                  Gerbang Selatan Cap Go Meh
+                </h3>
+                <p
+                  class="text-[11px] md:text-xs text-slate-600 leading-relaxed text-justify"
+                >
+                  Gerbang Selatan Kota Singkawang dikenal luas sebagai Gerbang
+                  Cap Go Meh. Monumen ini menjadi ikon batas perbatasan wilayah
+                  selatan yang secara resmi memisahkan Kota Singkawang dengan
+                  Kabupaten Bengkayang dengan sentuhan kental arsitektur
+                  oriental.
+                </p>
+              </div>
+              <div
+                class="w-full h-32 rounded-xl overflow-hidden border border-pink-200 shadow-inner relative bg-pink-50/20"
+              >
+                <img
+                  alt="Gerbang Selatan Cap Go Meh"
+                  class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                  src="Gerbang Selatan Capgomeh.png"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+            <!-- Gate 2: Mahligai (Melayu) -->
+            <article
+              class="bg-white border border-amber-100 p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-300 transition-all duration-300 flex flex-col justify-between group reveal-on-scroll delay-200"
+            >
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 border border-amber-200"
+                    ><span class="material-symbols-outlined text-[16px]"
+                      >north</span
+                    ></span
+                  >
+                  <span
+                    class="px-2.5 py-1 rounded-md bg-amber-600/90 text-white text-[9px] font-black uppercase tracking-widest shadow-sm"
+                    >Batas Utara</span
+                  >
+                </div>
+                <h3
+                  class="text-sm font-extrabold uppercase tracking-wide text-slate-900 group-hover:text-amber-600 transition-colors"
+                >
+                  Gerbang Mahligai Pesisir
+                </h3>
+                <p
+                  class="text-[11px] md:text-xs text-slate-600 leading-relaxed text-justify"
+                >
+                  Pintu gerbang megah yang menandai perbatasan ujung utara
+                  antara Kota Singkawang dan Kabupaten Sambas. Terletak kokoh di
+                  Semelagi Kecil yang berbatasan langsung dengan Semelagi Besar,
+                  mengusung kubah dan warna keemasan peradaban Melayu pesisir.
+                </p>
+              </div>
+              <div
+                class="w-full h-32 rounded-xl overflow-hidden border border-amber-200 shadow-inner relative bg-amber-50/20"
+              >
+                <img
+                  alt="Gerbang Mahligai Pesisir"
+                  class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                  src="GerbangMahligai.png"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+            <!-- Gate 3: Tama Ka' Lawang (Dayak) -->
+            <article
+              class="bg-white border border-emerald-100 p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between group reveal-on-scroll delay-300"
+            >
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 border border-emerald-200"
+                    ><span class="material-symbols-outlined text-[16px]"
+                      >east</span
+                    ></span
+                  >
+                  <span
+                    class="px-2.5 py-1 rounded-md bg-emerald-600/90 text-white text-[9px] font-black uppercase tracking-widest shadow-sm"
+                    >Batas Timur</span
+                  >
+                </div>
+                <h3
+                  class="text-sm font-extrabold uppercase tracking-wide text-slate-900 group-hover:text-emerald-600 transition-colors"
+                >
+                  Gerbang Tama Ka' Lawakng
+                </h3>
+                <p
+                  class="text-[11px] md:text-xs text-slate-600 leading-relaxed text-justify"
+                >
+                  Batas wilayah timur antara Singkawang dan Kabupaten Bengkayang
+                  (Jalan Raya Singkawang-Bengkayang). Diresmikan Desember 2022,
+                  gerbang ini mengusung ukiran tameng, perisai, dan burung
+                  enggang etnis Dayak yang sarat filosofi pertahanan spiritual.
+                </p>
+              </div>
+              <div
+                class="w-full h-32 rounded-xl overflow-hidden border border-emerald-200 shadow-inner relative bg-emerald-50/20"
+              >
+                <img
+                  alt="Gerbang Tama Ka' Lawang"
+                  class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                  src="Gerbang TamaKlawang.png"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ==========================================
+         BEGIN: FOOTER 
+         ========================================== -->
+    <footer
+      class="w-full border-t border-zinc-200 mt-20 py-8 bg-white reveal-on-scroll"
+    >
+      <div
+        class="max-w-[1360px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <div
+          class="text-center md:text-left w-full md:w-auto flex flex-col md:flex-row items-center gap-4"
+        >
+          <!-- Logo TD dengan Gradasi 3 Warna -->
+          <div
+            class="w-10 h-10 rounded bg-gradient-to-br from-pink-500 via-amber-500 to-emerald-500 flex items-center justify-center text-white text-sm font-bold shadow-sm"
+          >
+            TD
+          </div>
+          <div>
+            <h4
+              class="text-xs font-bold tracking-wider uppercase text-slate-900"
+            >
+              PAMERAN VIRTUAL REKONSILIASI
+            </h4>
+            <p class="text-[11px] text-zinc-500 mt-0.5 font-medium">
+              Seni, Sejarah &amp; Arsitektur Tradisional Kalimantan Barat
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full md:w-auto flex justify-center">
+          <!-- Tombol dengan Background Gradasi 3 Warna -->
+          <a
+            href="Index.html"
+            class="inline-block bg-gradient-to-r from-pink-600 via-amber-500 to-emerald-600 hover:opacity-90 text-white text-[11px] font-bold uppercase tracking-wider px-6 py-2.5 rounded shadow-sm transition-opacity text-center"
+          >
+            KEMBALI KE PAMERAN VIRTUAL
+          </a>
+        </div>
+
+        <div
+          class="text-center md:text-right w-full md:w-auto flex justify-center md:justify-end"
+        >
+          <!-- Teks Link dengan Text Gradasi 3 Warna -->
+          <a
+            class="inline-flex items-center text-[13px] font-bold group transition-all"
+            href="Tionghoa.html"
+          >
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-amber-500 to-emerald-600 group-hover:opacity-70 transition-opacity"
+              >Jelajahi Paviliun Tionghoa</span
+            >
+            <span
+              class="ml-1.5 text-base leading-none text-emerald-600 transition-transform group-hover:translate-x-1"
+              >→</span
+            >
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- END: FOOTER -->
+
+    <!-- ==========================================
+         JAVASCRIPT LOGIC (Menu, Scroll Reveal, Transitions)
+         ========================================== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- 1. Scroll Reveal Logic ---
+        const reveals = document.querySelectorAll(".reveal-on-scroll");
+        const revealOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const revealOnScroll = new IntersectionObserver(function (
+          entries,
+          observer,
+        ) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-active");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, revealOptions);
+
+        reveals.forEach((reveal) => revealOnScroll.observe(reveal));
+
+        // --- 2. Page Transition Logic ---
+        const internalLinks = document.querySelectorAll("a[href]");
+        internalLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            const targetUrl = this.getAttribute("href");
+            // Abaikan link anchor, link eksternal, atau javascript void
+            if (
+              !targetUrl ||
+              targetUrl.startsWith("#") ||
+              targetUrl.startsWith("javascript") ||
+              this.target === "_blank"
+            )
+              return;
+
+            e.preventDefault();
+            document.body.classList.add("page-fade-out");
+
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 400);
+          });
+        });
+
+        // --- 3. Mobile Navigation Menu Logic ---
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const closeMenuBtn = document.getElementById("closeMenuBtn");
+        const mobileDrawer = document.getElementById("mobileDrawer");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+
+        function openMobileMenu() {
+          mobileDrawer.classList.add("mobile-menu-active");
+          mobileOverlay.classList.add("overlay-active");
+          document.body.style.overflow = "hidden"; // cegah scroll saat menu terbuka
+        }
+
+        function closeMobileMenu() {
+          mobileDrawer.classList.remove("mobile-menu-active");
+          mobileOverlay.classList.remove("overlay-active");
+          document.body.style.overflow = "";
+        }
+
+        if (mobileMenuBtn)
+          mobileMenuBtn.addEventListener("click", openMobileMenu);
+        if (closeMenuBtn)
+          closeMenuBtn.addEventListener("click", closeMobileMenu);
+        if (mobileOverlay)
+          mobileOverlay.addEventListener("click", closeMobileMenu);
+
+        // --- 4. Sticky Header Blur Effect ---
+        const header = document.getElementById("mainHeader");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 20) {
+            header.classList.add("shadow-md", "bg-white/95");
+            header.classList.remove("bg-white");
+          } else {
+            header.classList.remove("shadow-md", "bg-white/95");
+            header.classList.add("bg-white");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
